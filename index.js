@@ -16,17 +16,18 @@ program
 
 program
     .command('bundle')
-    .arguments('<bundleId> <bundleName>')
+    .arguments('<bundleId> <bundleName> <buildNumber>')
     .usage('"MyApp.UAT" "APP UAT"')
     .description('Change application bundle ID and name (display name)')
-    .action((bundleId, bundleName) =>
+    .action((bundleId, bundleName, buildNumber) =>
         bundle.processBundle({
             projectPath: program.directory || process.cwd(),
             iosProjectSubDir: program.iosSubDir || defaultIosProjectSubDir,
             androidProjectSubDir: program.androidSubDir || defaultAndroidProjectSubDir,
             displayName: bundleName,
             bundleId: bundleId,
-            bundleName: bundleName
+            bundleName: bundleName,
+            buildNumber: buildNumber
         })
     );
 

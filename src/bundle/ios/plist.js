@@ -17,7 +17,7 @@ const process = (iosProjectPath, payload, strategy) => {
             return Promise.all(fileObjList.map(thisFileObj => strategy.utils.plistParse(strategy.plistParser, thisFileObj)));
         }).then(parsedObjList => {
             strategy.utils.log.info(`Updating files in memory`);
-            return Promise.all(parsedObjList.map(thisParsedObjFile => strategy.updaters.plistUpdater.applyUpdates(thisParsedObjFile, payload.displayName, payload.bundleId, payload.bundleName)));
+            return Promise.all(parsedObjList.map(thisParsedObjFile => strategy.updaters.plistUpdater.applyUpdates(thisParsedObjFile, payload.displayName, payload.bundleId, payload.bundleName, payload.buildNumber)));
         }).then(updatedObjList => {
             strategy.utils.log.info(`Building plists`);
             return Promise.all(updatedObjList.map(thisUpdatedObjFile => strategy.utils.plistBuild(strategy.plistParser, thisUpdatedObjFile)));

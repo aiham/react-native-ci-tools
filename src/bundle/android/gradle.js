@@ -11,7 +11,7 @@ const process = (androidProjectValidPath, payload, strategy) => {
         }).then(androidGradleFileObj => {
             strategy.utils.log.sucess(`+ Loaded Android gradle file loaded into memory`);
             strategy.utils.log.info(`Updating gradle file in memory`);
-            return strategy.updaters.gradleUpdater(androidGradleFileObj, payload.bundleId);
+            return strategy.updaters.gradleUpdater(androidGradleFileObj, payload.bundleId, payload.buildNumber);
         });
 };
 
